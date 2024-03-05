@@ -13,6 +13,13 @@
 
 . . . ! ! ! ? ? ?
 
+## Meanwhile, you can visit my other pages:
+
+To see if I can manage to [革命 the chicken?](https://github.com/babadue/AI-Translator-Grammar/blob/main/The_Chicken.md)
+
+To read a story of what happened when [cheap met Mistral AI?](https://github.com/babadue/cheap_meets_mistralAI)
+
+
 # <div align="center">An AI For Every Home</div>
 
 ![alt text](two_genie_bottles-1.jpg)
