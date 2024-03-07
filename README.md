@@ -19,7 +19,7 @@ To see if I can manage to [革命 the chicken?](https://github.com/babadue/AI-Tr
 
 To read a story of what happened when [cheap met Mistral AI?](https://github.com/babadue/cheap_meets_mistralAI)
 
-After initial texting exchanges, our cheap decides to gather all the 勇气 to up the ante and pick up the phone and dial MistralAI. You can listen in on the encounter below.
+After initial texting exchanges, our cheap decides to gather all the 勇气 to up the ante and picks up the phone to dial MistralAI. You can listen in on the encounter below.
 
 
 # <div align="center">An AI For Every Home</div>
