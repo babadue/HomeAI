@@ -13,7 +13,7 @@
 
 . . . ! ! ! ? ? ?
 
-## Meanwhile, you can visit my other pages:
+## In the meantime, you can visit my other pages:
 
 To see if I can manage to [革命 the chicken?](https://github.com/babadue/AI-Translator-Grammar/blob/main/The_Chicken.md)
 
