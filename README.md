@@ -2,7 +2,7 @@
 
 
 
-## This is an amazing period in human history.  It was just yesteryear that when the era of personal computers were born, from the Commodore VIC-20 and Apple II to the IBM PC.  Along came the internet and in the blink of an eye, 40 years later, LLM Large Language Models are here.  
+## This is an amazing period in human history.  It was just yesterday that when the era of personal computers were born, from the Commodore VIC-20 and Apple II to the IBM PC.  Along came the internet and in the blink of an eye, 40 years later, LLM Large Language Models are here.  
 
 ## I believe Large Language Models (software) is the third revolution after personal computers (hardware) and internet (connectivity).
 
@@ -19,7 +19,7 @@ To see if I can manage to [革命 the chicken?](https://github.com/babadue/AI-Tr
 
 To read a story of what happened when [cheap met Mistral AI?](https://github.com/babadue/cheap_meets_mistralAI)
 
-After initial texting exchanges, our cheap decides to gather all the 勇气 to up the ante and picks up the phone to dial MistralAI. You can listen in on the encounter below.
+After initial texting exchanges, our cheap decided to gather all the 勇气 to up the ante and picked up the phone to dial MistralAI. You can listen in on the encounter below.
 
 
 # <div align="center">An AI For Every Home</div>
