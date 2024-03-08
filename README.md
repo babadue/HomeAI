@@ -2,7 +2,7 @@
 
 
 
-## This is an amazing period in human history.  It was just yesterday that when the era of personal computers were born, from the Commodore VIC-20 and Apple II to the IBM PC.  Along came the internet and in the blink of an eye, 40 years later, LLM Large Language Models are here.  
+## This is an amazing period in human history.  It was just yesterday when the era of personal computers were born, from the Commodore VIC-20 and Apple II to the IBM PC.  Along came the internet and in the blink of an eye, 40 years later, LLM Large Language Models are here.  
 
 ## I believe Large Language Models (software) is the third revolution after personal computers (hardware) and internet (connectivity).
 
