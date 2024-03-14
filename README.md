@@ -11,7 +11,9 @@
 
 ## So, it is time to let the Genie out of the bottle and see the power of combine that benefit us all... while having fun!
 
-. . . ! ! ! ? ? ?
+. . . ! ! ! ? ? ? 
+
+## [The genie is out!](https://www.kickstarter.com/projects/babadue/a-private-customizable-ai-for-every-home)
 
 ## In the meantime, you can visit my other pages:
 
