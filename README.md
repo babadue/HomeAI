@@ -25,6 +25,8 @@ After initial texting exchanges, our Cheap decided to gather all the 勇气 to u
 
 You can join Cheap and Mistral AI at the movies below!
 
+Our Cheap just got a new competitor as Mistral just gained the ability to hold multi-concurrent chat conversations.  You can find out who our Cheap's competitor is below.
+
 
 # <div align="center">An AI For Every Home</div>
 
