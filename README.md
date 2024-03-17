@@ -17,15 +17,15 @@
 
 ## In the meantime, you can visit my other pages:
 
-To see if I can manage to [革命 the chicken?](https://github.com/babadue/AI-Translator-Grammar/blob/main/The_Chicken.md)
+* To see if I can manage to [革命 the chicken?](https://github.com/babadue/AI-Translator-Grammar/blob/main/The_Chicken.md)
 
-To read a story of what happened when [cheap met Mistral AI?](https://github.com/babadue/cheap_meets_mistralAI)
+* To read a story of what happened when [Cheap met Mistral AI?](https://github.com/babadue/cheap_meets_mistralAI)
 
-After initial texting exchanges, our Cheap decided to gather all the 勇气 to up the ante and picked up the phone to dial MistralAI. You can listen in on the encounter below.
+* After initial texting exchanges, our Cheap decided to gather all the 勇气 to up the ante and picked up the phone to dial MistralAI. You can listen in on the encounter below.
 
-You can join Cheap and Mistral AI at the movies below!
+* You can join Cheap and Mistral AI at the movies below!
 
-Our Cheap just got a new competitor as Mistral just gained the ability to hold multi-concurrent chat conversations.  You can find out who our Cheap's competitor is below.
+* Our Cheap just got a new competitor as Mistral just gained the ability to hold multi-concurrent chat conversations.  You can find out who our Cheap's competitor is below.
 
 
 # <div align="center">An AI For Every Home</div>
