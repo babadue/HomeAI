@@ -36,7 +36,11 @@ https://github.com/babadue/cheap_meets_mistralAI/assets/116512015/18c7b2b3-fca0-
 
 https://github.com/babadue/cheap_meets_mistralAI/assets/116512015/1d9e0f32-8833-4603-ad9b-5ac6d1d86ad5
 
-https://github.com/babadue/cheap_meets_mistralAI/assets/116512015/0c1997bd-4b14-463a-848f-16ddb0f37739
+
+
+
+
+https://github.com/babadue/HomeAI/assets/116512015/ed83b5c9-00b9-446f-9bc9-61ad82bb9cbd
 
 
 
