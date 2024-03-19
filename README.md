@@ -27,6 +27,8 @@
 
 * Our Cheap just got a new competitor as Mistral just gained the ability to hold multi-concurrent chat conversations.  You can find out who our Cheap's competitor is below.
 
+* Our Cheap goes mobile with Mistral.  You can find out below.
+
 
 # <div align="center">An AI For Every Home</div>
 
