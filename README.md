@@ -44,3 +44,7 @@ https://github.com/babadue/HomeAI/assets/116512015/4469f2f4-63c3-4fcf-a61d-1500a
 
 https://github.com/babadue/HomeAI/assets/116512015/1b74bf56-3450-47ba-bf01-119ac2287cb2
 
+https://github.com/babadue/HomeAI/assets/116512015/050fd14d-1d60-4151-9a7d-f4a683d8e342
+
+https://github.com/babadue/HomeAI/assets/116512015/7c01af54-ea33-473a-87f9-673f7e3db2d8
+
