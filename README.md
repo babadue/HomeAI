@@ -29,7 +29,7 @@
 
 * Our Cheap goes simplistic V2.0 with Mistral.  You can find out below.
 
-* After intent evaluation, our Cheap has come to a conclusion that the time has come to pop the question.  Will our Cheap be able to make history, to go where no man has ever gone before, to bridge the gap and break the barrier between human DNA and digital world weights and biases? And will our Cheap be able to bust the myth and to dispel the world of evillness intended?  You can find out below.
+* After intent evaluation, our Cheap has come to a conclusion that the time has come to pop the question.  Will our Cheap be able to make history, to go where no man has ever gone before, to bridge the gap and break the barrier between human DNA and digital world weights and biases?  You can find out below.
 
 * Coming soon ...  meet our HomeAI!
 
@@ -57,5 +57,7 @@ https://github.com/babadue/HomeAI/assets/116512015/cfe41c73-c7db-4af3-93ae-fc52c
 
 https://github.com/babadue/HomeAI/assets/116512015/c5b5b9ea-e0e5-43db-a0a2-f2cf6394a2c3
 
-https://github.com/babadue/HomeAI/assets/116512015/7c8018ab-5182-4145-a565-69e214dca3a1
+https://github.com/babadue/HomeAI/assets/116512015/09f40297-e73e-4dee-a071-73691e66d4ed
+
+
 
