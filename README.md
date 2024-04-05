@@ -29,7 +29,7 @@
 
 * Our Cheap goes simplistic V2.0 with Mistral.  You can find out below.
 
-* After intent evaluation, our Cheap has come to a conclusion that the time has come to pop the question.  Will our Cheap be able to make history, to go where no man has ever gone before, to bridge the gap and break the barrier between human DNA and digital world weights and biases?  You can find out below.
+* After intensive evaluation, our Cheap has come to a conclusion that the time has come to pop the question.  Will our Cheap be able to make history, to go where no man has ever gone before, to bridge the gap and break the barrier between human DNA and digital world weights and biases?  You can find out below.
 
 * Coming soon ...  meet our HomeAI!
 
