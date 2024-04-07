@@ -1,63 +1,55 @@
-# <div align="center">An AI For Every Home</div>
+# <div align="center">When Cheap Met Mistral AI</div>
 
+## Description:
 
+This software project is derived from NVIDIA's Chat with RTX. I recently installed and 
+tried out this NVIDIA package. To my surprise, it is quite capable of running on a 
+single GPU, such as the RTX 3060 GPU on my PC machine. Unfortunately, the demo 
+software doesn't have the capability of continuing the conversation. That gave me the 
+idea to create a project that allows the chatbot to carry on a continuation conversation. 
 
-## This is an amazing period in human history.  It was just yesterday when the era of personal computers were born, from the Commodore VIC-20 and Apple II to the IBM PC.  Along came the internet and in the blink of an eye, 40 years later, LLM Large Language Models are here.  
+This project will go beyond to facilitate a continuous conversation of Chat with RTX. It will use the TensorRT-LLM engine with Mistral model that Chat with RTX app installed on your PC. The features will include voice interaction and more. You can interact with your own private AI in your home. The interactions can be done via text or voice and through other PCs or mobile devices. More importantly, the term 'What happens in Vegas, stays in Vegas' applies. All interactions will stay within your own PC running this project software. No data will travel out to the internet. Once the software is installed, no internet connection is required.  The role of the AI can be customized - up to certain extent.  And the chatbot can hold multiple concurrent chat conversations.  
 
-## I believe Large Language Models (software) is the third revolution after personal computers (hardware) and internet (connectivity).
+Use cases for this project include education, home entertainment, family fun-time, etc.
 
-## Throughout human history, technology and knowledge have contributed to improving the quality of life.  Large Language Models are no exception. 
+## Procedure:
 
+1. &nbsp; Install NVIDIA's [Chat with RTX](https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/) to get the TensorRT-LLM engine with Mistral model installed on your PC.
 
-## So, it is time to let the Genie out of the bottle and see the power of combine that benefit us all... while having fun!
+2. &nbsp; Clone this respository.
 
-. . . ! ! ! ? ? ? 
+3. &nbsp; In the cloned folder on your PC, starting the installation by double-click on the `install.bat`.  The installation process will take about 5-10 minutes depending on your internet connection speed.  Once finished, the installation window will automatically close and you should see an icon on your Desktop with HomeAI ![ ](homeai.png "Optional title").
 
-## [The genie is out!](https://www.kickstarter.com/projects/babadue/a-private-customizable-ai-for-every-home)
+4. &nbsp; The `config.json` file in `config` folder is where you can customize the role.  It is under `strings` section and `my_sys_cmd` key.
 
-## In the meantime, you can visit my other pages:
+## System Requirements:
 
-* To see if I can manage to [革命 the chicken?](https://github.com/babadue/AI-Translator-Grammar/blob/main/The_Chicken.md)
+* Same as NVIDIA's [Chat with RTX](https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/) .
 
-* To read a story of what happened when [Cheap met Mistral AI?](https://github.com/babadue/cheap_meets_mistralAI)
+* HomeAI also uses a second LLM model - SeamlessM4T-v2.  While this model can be run without a GPU, but performance is 
+greatly improved if it can access the GPU. It can share the same GPU with the Mistral model.
 
-* After initial texting exchanges, our Cheap decided to gather all the 勇气 to up the ante and picked up the phone to dial MistralAI. You can listen in on the encounter below.
+* If you already have a GPU version with 8GB, then that will be fine. But if you are planning to acquire the hardware, I would recommend that you get the one above 8GB. If you are budget conscious, the RTX 3060 is excellent choice since it has 12GB. I develop my project using this GPU.
 
-* You can join Cheap and Mistral AI at the movies below!
+## About security:
 
-* Our Cheap just got a new competitor as Mistral just gained the ability to hold multi-concurrent chat conversations.  You can find out who our Cheap's competitor is below.
+The project is intended for home use. During the installation process, it will generate the necessary components for SSL using a self-signed certificate. SSL is needed because modern browsers require it to allow access to the microphone from a web page. When you first visit the HomeAI page, you will receive a warning about an unsecured page. You can safely proceed to access it.
 
-* Our Cheap goes simplistic V2.0 with Mistral.  You can find out below.
+There are other components in the project that were also designed with home usage in mind, such as the messaging exchange between the backend and frontend components. Therefore, if you are planning to use this in an office environment, you need to take this into consideration and make modifications where needed.
 
-* After intensive evaluation, our Cheap has come to a conclusion that the time has come to pop the question.  Will our Cheap be able to make history, to go where no man has ever gone before, to bridge the gap and break the barrier between human DNA and digital world weights and biases?  You can find out below.
+## Contributors:
 
-* Coming soon ...  meet our HomeAI!
+ChatGPT-3.5 the coding machine - Without ChatGPT-3.5, this project would probably take much longer to complete!
 
+## Project Attribution:
+https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/
 
+## Disclaimer:
 
-# <div align="center">An AI For Every Home</div>
+This project is provided "as is" and without any warranty. Use it at your own risk. 
+    
 
-![alt text](two_genie_bottles-1.jpg)
-
-https://github.com/babadue/cheap_meets_mistralAI/assets/116512015/18c7b2b3-fca0-492a-b601-d19276e09d42
-
-https://github.com/babadue/HomeAI/assets/116512015/5e577d21-981b-436c-86f7-4d96b4893445
-
-https://github.com/babadue/HomeAI/assets/116512015/1d8dd372-62ab-49f4-a5a7-26299f5fd7fa
-
-https://github.com/babadue/HomeAI/assets/116512015/4469f2f4-63c3-4fcf-a61d-1500a9d25421
-
-https://github.com/babadue/HomeAI/assets/116512015/fa92bcb2-944e-4055-b404-4682f843ae31
-
-https://github.com/babadue/HomeAI/assets/116512015/4c7bdecd-5235-4d08-9b98-465768820f8a
-
-https://github.com/babadue/HomeAI/assets/116512015/ca182983-a8ea-40b4-9b13-5336a55649d4
-
-https://github.com/babadue/HomeAI/assets/116512015/cfe41c73-c7db-4af3-93ae-fc52cb7dfbd8
 
 https://github.com/babadue/HomeAI/assets/116512015/c5b5b9ea-e0e5-43db-a0a2-f2cf6394a2c3
 
 https://github.com/babadue/HomeAI/assets/116512015/09f40297-e73e-4dee-a071-73691e66d4ed
-
-
-

@@ -1,0 +1,458 @@
+<!--
+MIT License
+
+Copyright (c) [2024] [github\babadue]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clearable Textbox with Scrollable Text Area</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .hint {
+              position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #F3F3F3;
+        }
+        
+        .scrollable {
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 2px solid #ccc;
+            width: 50vw;
+            padding: 10px;
+            font-size: 16px;
+            text-align: left; 
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .red {
+            color: red;
+        }
+        .you {
+            font-weight: bold;
+            color: yellow;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .talk-button {
+            position: relative;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-bottom: 20px;
+            width: 51vw;
+            padding: 10px;
+            font-size: 20px;
+            background-color: #00ffff;
+        }
+
+        .clearable-input {
+            position: relative;
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 30px;
+            color: #888;
+        }
+        input[type="text"] {
+            background-color: #888 !important;
+        }
+        .clearable-input input {
+            width: 50vw;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .clearable-input input::placeholder {
+            color: #ccc; 
+        }
+
+        .clearable-input .clear-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+            color: #888; 
+        }
+
+        .clearable-input input:focus + .clear-button {
+            display: block;
+        }
+
+        textarea {
+            width: 50vw;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+            resize: vertical;
+            overflow-y: scroll;
+        }
+
+        .disabled {
+            position: relative;
+            opacity: 0.5; 
+            pointer-events: none;
+        }
+        
+        .disabled::after {
+            content: "";
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white; 
+            opacity: 0.5; 
+            pointer-events: none;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        @keyframes blink {
+          0%, 100% { border-color: black; }
+          50% { border-color: var(--blink-color); }
+        }
+
+        .blinking {
+          animation: blink 1s infinite;
+          border: 2px solid black;
+          border-radius: 5px;
+        }
+
+        :root {
+            --background-color: #FFFFFF; 
+            --text-color: #000000; 
+        }
+
+        /* Dark mode */
+        body.dark-mode {
+            --background-color: #333333; 
+            --text-color: #FFFFFF; 
+        } 
+
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        transition: background-color 0.3s, color 0.3s; 
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        text-align: center;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9999; /* Ensure it's on top of other content */
+        }
+        
+    </style>
+</head>
+<body class="dark-mode">
+    <div class="hint" id="hintMessage">
+        For text chat: type your message in the box. &nbsp;&nbsp;&nbsp;
+        For voice chat: Tap the Talk button.
+    </div>
+    <div class="container">
+        <div id="talk-group">
+            <button class="talk-button" id="talk-button" onclick="talk()">Talk</button>
+        </div>
+        <div id="text-group">
+        <div class="clearable-input">            
+            <input type="text" id="myInput" placeholder="Type your message ... then enter" onkeypress="handleKeyPress(event)">
+            <div class="clear-button" id="clear-button" onclick="clearInput()">*</div>
+        </div>
+            <div class="scrollable" id="scrollable"></div>
+        </div>    
+    </div>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+
+
+    <script>
+        var selectedPrompt = "";
+        var srcLang = "eng";
+        var tgtLang = "eng";
+        let audioData;
+        let mediaRecorder;
+        let chunks = [];
+        let audioURL;
+        let myAudioData;
+        let mySampleRate = 16000;  
+        let stopButtonId;
+        let you = "You: ";
+        let ai = "Mistral: ";
+        let msg1 = "Refresh the page to start a new chat session."
+        // Get the server's IP address from the template
+        var ip_address = "{{ ip_address }}";
+
+        // Construct the API URL using the server's IP address
+        var api_url = "https://" + ip_address;
+
+        const textInput = document.getElementById('myInput');
+        const talk_button = document.getElementById('talk-button');
+        textInput.addEventListener('input', function() {            
+            if (talk_button.disabled == false) {
+                talk_button.disabled = true;
+            }                
+        });
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            setInitialState();
+        });
+        
+        function setInitialState() {
+            if (navigator.userAgent.match(/mobile/i)) {
+                var input = document.getElementById("myInput");
+                input.style.width = "80vw";
+                var talkButton = document.getElementById("talk-button");
+                talkButton.style.width = "80vw";
+                var scrollable = document.getElementById("scrollable");
+                scrollable.style.width = "80vw";
+                
+            }
+        }
+        
+        function clearInput() {
+            document.getElementById('myInput').value = '';
+        }
+
+        function addText(title, text) {
+            var textInput = text;
+            var scrollable = document.getElementById("scrollable");
+            var p = document.createElement("p");
+            var youSpan = document.createElement("span");
+            youSpan.textContent = title;
+            youSpan.classList.add("you"); 
+            p.appendChild(youSpan);
+            p.appendChild(document.createTextNode(textInput));
+            scrollable.style.display = 'block';
+            scrollable.appendChild(p);
+            scrollable.scrollTop = scrollable.scrollHeight;
+        }
+        
+        function sendMessage() {
+            var hint = document.getElementById("hintMessage");
+            hint.textContent = msg1;
+            disableElement('talk-group');
+            var message = document.getElementById('myInput').value;
+            addText(you, message);
+            t2aiTranslate(message);
+            clearInput();
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                hideElement('talk-button');
+                sendMessage();
+            }
+        }
+
+        function talk() {
+            var hint = document.getElementById("hintMessage");
+            hint.textContent = msg1;
+            hideElement('text-group');
+            var button = document.querySelector('.talk-button');
+            if (button.textContent === 'Talk') {
+                button.classList.add('blinking');
+                button.style.setProperty('--blink-color', 'red');
+                button.textContent = 'Stop';
+                startRecording(this);
+            } else if (button.textContent === 'Stop') {
+                button.textContent = 'Waiting for response ...';
+                disableElement('talk-group');
+                button.classList.remove('blinking');
+                button.style.borderColor = 'black'; 
+                mediaRecorder.stop();
+        
+            } else {
+                button.textContent = 'Talk';
+            }
+        }
+
+        function hideElement(elementId) {
+            var element = document.getElementById(elementId);
+            if (element) {
+                element.disabled = true;
+                element.classList.add('disabled');
+                element.style.display = "none";
+            }
+        }    
+
+        function disableElement(elementId) {
+            var element = document.getElementById(elementId);
+            if (element) {
+                element.disabled = true;
+                element.classList.add('disabled');
+            }
+        }
+    
+        function enableElement(elementId) {
+            var element = document.getElementById(elementId);
+            if (element) {
+                element.disabled = false;
+                element.classList.remove('disabled');
+            }
+        }
+
+    async function startRecording(button) {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: { sampleRate: 48000 } });
+      mediaRecorder = new MediaRecorder(stream, { audioBitsPerSecond: 16000 });
+
+      mediaRecorder.ondataavailable = (e) => {
+        chunks.push(e.data);
+      };
+
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(chunks, { type: 'audio/ogg; codecs=opus' });
+        chunks = [];
+        const reader = new FileReader();
+        reader.onload = () => {
+          const arrayBuffer = reader.result;
+          const audioContext = new AudioContext();
+          audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
+            const sourceBuffer = audioBuffer.getChannelData(0);
+            const targetBuffer = new Float32Array(Math.round(sourceBuffer.length * mySampleRate / audioBuffer.sampleRate));
+            const ratio = sourceBuffer.length / targetBuffer.length;
+            for (let i = 0; i < targetBuffer.length; i++) {
+              const sourceIndex = Math.round(i * ratio);
+              targetBuffer[i] = sourceBuffer[sourceIndex];
+            }
+            myAudioData =  Array.from(targetBuffer);
+            send_s2tTranslate(myAudioData, mySampleRate);
+
+          });
+        };
+        reader.readAsArrayBuffer(blob);
+      };
+      mediaRecorder.start();
+    };
+
+    function send_s2tTranslate(audioData, sampleRate) {
+        audioSample = audioData;
+        sampleRate = sampleRate;
+        var s2t_url = api_url + "/s2t"
+        fetch(s2t_url, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ audioSample, sampleRate, srcLang, tgtLang}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.audioData) {
+                var button = document.querySelector('.talk-button');
+                button.classList.add('blinking');
+                button.style.setProperty('--blink-color', 'yellow');
+                button.textContent = 'Responding ...';
+                audioData = data.audioData;
+                sampleRate = data.sample_rate;
+                playAudio(data.audioData, data.sample_rate);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function handlePlaybackEnd() {
+        blinkElement('speaker', 'off');
+    }
+
+    // Function to play audio using Web Audio API on the client side
+    function playAudio(audioData, sample_rate) {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const audioBuffer = audioContext.createBuffer(1, audioData.length, sample_rate);
+
+        // Fill the buffer with the audio data
+        const audioBufferChannel = audioBuffer.getChannelData(0);
+        for (let i = 0; i < audioData.length; i++) {
+            audioBufferChannel[i] = audioData[i];
+        }
+
+        // Create an audio buffer source node
+        const source = audioContext.createBufferSource();
+        source.buffer = audioBuffer;
+
+        // Connect the source to the audio context's destination (speakers)
+        source.connect(audioContext.destination);
+
+        // Start playing the audio
+        source.start();
+
+        // Call the onendedCallback when the audio playback is complete
+        source.onended = function() {
+            var button = document.querySelector('.talk-button');
+            button.classList.remove('blinking');
+            button.style.borderColor = 'black'; // Reset border color
+            enableElement('talk-group');
+            button.textContent = 'Talk';
+            
+        };
+    }
+
+    function t2aiTranslate(message) {
+        const inputText = message;
+        var t2ai_url = api_url + "/t2ai"
+        fetch(t2ai_url, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ inputText, srcLang, tgtLang}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            addText(ai, data.processedText);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    </script>
+</body>
+</html>

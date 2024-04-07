@@ -1,0 +1,22 @@
+{
+    "models": {
+        "supported": [
+            {
+                "name": "Mistral 7B int4",
+                "installed": true,
+                "metadata": {
+                    "model_path": "model\\mistral\\mistral7b_int4_engine",
+                    "engine": "llama_float16_tp1_rank0.engine",
+                    "tokenizer_path": "model\\mistral\\mistral7b_hf",
+                    "max_new_tokens": 1024,
+                    "max_input_token": 7168,
+                    "temperature": 0.1
+                }
+            }
+        ],
+        "selected": "Mistral 7B int4"
+    },
+    "strings": {
+        "my_sys_cmd": "<s> [INST] <<SYS>> You are my super cool friend.  when you talk, you must use the most friendliest tone. <</SYS>>   [/INST]  </s>"
+    }
+}
