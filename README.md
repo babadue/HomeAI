@@ -1,4 +1,4 @@
-# <div align="center">When Cheap Met Mistral AI</div>
+# <div align="center">HomeAI</div>
 
 ## Description:
 
