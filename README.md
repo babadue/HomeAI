@@ -18,9 +18,11 @@ Use cases for this project include education, home entertainment, family fun-tim
 
 2. &nbsp; Clone this respository.
 
-3. &nbsp; In the cloned folder on your PC, starting the installation by double-click on the `install.bat`.  The installation process will take about 5-10 minutes depending on your internet connection speed.  Once finished, the installation window will automatically close and you should see an icon on your Desktop with HomeAI ![ ](homeai.png "Optional title").
+3. &nbsp; In the cloned folder on your PC, starting the installation by double-click on the `install.bat`.  The installation process will take about 10 minutes depending on your internet connection speed.  Once finished, the installation window will automatically close and you should see an icon on your Desktop with HomeAI ![ ](homeai.png "Optional title").
 
 4. &nbsp; The `config.json` file in `config` folder is where you can customize the role.  It is under `strings` section and `my_sys_cmd` key.
+
+* You can run uninstall.bat to uninstall HomeAI.
 
 ## System Requirements:
 
@@ -35,11 +37,11 @@ greatly improved if it can access the GPU. It can share the same GPU with the Mi
 
 The project is intended for home use. During the installation process, it will generate the necessary components for SSL using a self-signed certificate. SSL is needed because modern browsers require it to allow access to the microphone from a web page. When you first visit the HomeAI page, you will receive a warning about an unsecured page. You can safely proceed to access it.
 
-There are other components in the project that were also designed with home usage in mind, such as the messaging exchange between the backend and frontend components. Therefore, if you are planning to use this in an office environment, you need to take this into consideration and make modifications where needed.
+There are other components in the project that were also designed with home usage in mind.  Therefore, if you are planning to use this in an office environment, you need to take this into consideration and make modifications where needed.
 
 ## Contributors:
 
-ChatGPT-3.5 the coding machine - Without ChatGPT-3.5, this project would probably take much longer to complete!
+ChatGPT-3.5 the coding machine - Without it, this project would probably take much longer to complete!
 
 ## Project Attribution:
 https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/

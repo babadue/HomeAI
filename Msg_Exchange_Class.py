@@ -49,7 +49,8 @@ class Msg_Frontend:
         self.callback = callback
         self.context = zmq.Context()
         self.socket = self.context.socket(zmq.PAIR)
-        self.socket.bind("tcp://*:6666")
+        # self.socket.bind("tcp://*:6666")
+        self.socket.bind("tcp://127.0.0.1:6666")
     
     def start_communication(self):
         while True:
