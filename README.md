@@ -52,6 +52,7 @@ This project is provided "as is" and without any warranty. Use it at your own ri
     
 
 
-https://github.com/babadue/HomeAI/assets/116512015/c5b5b9ea-e0e5-43db-a0a2-f2cf6394a2c3
+https://github.com/babadue/HomeAI/assets/116512015/f1c40096-b8fd-4555-a566-186d4bda2827
+
 
 https://github.com/babadue/HomeAI/assets/116512015/09f40297-e73e-4dee-a071-73691e66d4ed
