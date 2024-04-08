@@ -50,9 +50,9 @@ https://www.nvidia.com/en-us/ai-on-rtx/chat-with-rtx-generative-ai/
 
 This project is provided "as is" and without any warranty. Use it at your own risk. 
     
-
-
 https://github.com/babadue/HomeAI/assets/116512015/f1c40096-b8fd-4555-a566-186d4bda2827
 
+https://github.com/babadue/HomeAI/assets/116512015/bc9d7484-af37-4d22-914d-35fce506bc14
 
-https://github.com/babadue/HomeAI/assets/116512015/09f40297-e73e-4dee-a071-73691e66d4ed
+
+
