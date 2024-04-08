@@ -24,7 +24,7 @@
 echo Starting HomeAI...
 
 @REM start "" cmd /c "call frontend.bat"
-start "Speech Engine" cmd /c "timeout /t 2 >nul & call frontend.bat"
+start "Speech Engine" cmd /c "echo starting speech engine... & timeout /t 2 >nul & call frontend.bat"
 call backend.bat 
 pause
 
