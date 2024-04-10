@@ -24,7 +24,7 @@ Use cases for this project include education, home entertainment, family fun-tim
 
 * You can run uninstall.bat to uninstall HomeAI.
 
-* To update HomeAI with the new update, run update.bat.
+* Important: &nbsp; To update HomeAI with the new update, run update.bat.
 
 ## System Requirements:
 

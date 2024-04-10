@@ -42,7 +42,7 @@ for /f "tokens=1,* delims= " %%a in ('"%programdata%\MiniConda\Scripts\conda.exe
 
 :endfor
 if not "%env_path_found%"=="" (
-    echo Environment path found: %env_path_found%
+    @REM echo Environment path found: %env_path_found%
     call "%programdata%\MiniConda\Scripts\activate.bat" "%USERPROFILE%\HomeAI\env_home_ai"
     python --version
 ) else (
@@ -54,7 +54,6 @@ if not "%env_path_found%"=="" (
     pip install requests==2.31.0
     pip install transformers==4.39.3
     pip install protobuf==5.26.1
-    pip install zmq
     pip install sentencepiece==0.2.0
     pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
     python download_model.py

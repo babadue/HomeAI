@@ -26,13 +26,14 @@ from flask import render_template
 from model_initializer import initialize_model
 from flask import Flask, request, jsonify
 from flask_cors import CORS  
-import threading
-from Msg_Exchange_Class import Msg_Frontend
+# import threading
+# from Msg_Exchange_Class import Msg_Frontend
 import uuid
 import json
 import socket
 import os
 import logging
+import requests
 
 clients = []
 client = []
@@ -46,7 +47,10 @@ def find_client(clients, ip_address):
 def delete_a_client(clients, ip_address):
     for client in clients:
         if client[0] == ip_address:
-            my_msg_exchange.send_tensorrtengine(client[1], 'delete session')
+            data = {'sessionId': client[1], 'text': 'delete session'}
+            # Serialize the data into a JSON string
+            json_data = json.dumps(data)
+            response = requests.post(LL_MODEL_SERVER_URL, json=json_data)
             clients.remove(client)
             return
 
@@ -54,24 +58,7 @@ def create_a_client(clients, ip_address, session_id):
     clients.append([ip_address, session_id])
     client=clients[-1]
     return client
-    
-    
-
-# Shared variable to store the translated text
-translated_text = None
-event = threading.Event()
-
-def didReceive(json_data):
-    global translated_text
-    global event
-    data = json.loads(json_data)
-    text = data['text']
-    translated_text = text
-    event.set()
-
-my_msg_exchange = Msg_Frontend(callback=didReceive)
-communication_thread = threading.Thread(target=my_msg_exchange.start_communication)
-communication_thread.start()
+  
 
 def my_t2s(input_text):
     srcLang = 'eng'
@@ -110,10 +97,12 @@ def index():
     ip_address = get_server_ip()
     return render_template('index.html', ip_address=ip_address)
 
-# Route for serving index_lab.html
+# # Route for serving index_lab.html
 # @app.route('/index_lab.html')
 # def index4():
 #     return app.send_static_file('index_lab.html')
+
+LL_MODEL_SERVER_URL = 'http://127.0.0.1:5001/infer'
 
 @app.route('/t2ai', methods=['POST'])
 def t2ai():
@@ -123,15 +112,15 @@ def t2ai():
     client_ip = request.remote_addr
     client = find_client(clients, client_ip)    
     sessionId = client[1]
-    my_msg_exchange.send_tensorrtengine(sessionId,input_text)
+    data = {'sessionId': sessionId, 'text': input_text}
 
-    # Wait for the translated text to be received by didReceive
-    event.wait()
-    event.clear()
-
-    processed_text = translated_text
-    translated_text = None
-    return jsonify({'processedText': processed_text})
+    # Serialize the data into a JSON string
+    json_data = json.dumps(data)
+    # Forward request to LL model server
+    response = requests.post(LL_MODEL_SERVER_URL, json=json_data)
+    result = response.json()
+    response_data = result.get('response', '')
+    return jsonify({'processedText': response_data})
 
 @app.route('/t2t', methods=['POST'])
 def t2t():
@@ -178,18 +167,24 @@ def s2t():
     client_ip = request.remote_addr
     client = find_client(clients, client_ip)    
     sessionId = client[1]
-    my_msg_exchange.send_tensorrtengine(sessionId,translated_text_from_audio)
-
-    # Wait for the translated text to be received by didReceive
-    event.wait()
-    event.clear()
-    
-    processed_text = translated_text
-    translated_text = None
-    # print("s2t after audio_inputs b4 return", processed_text)
-    audio_array_from_text, sample_rate = my_t2s(processed_text)
-
+    data = {'sessionId': sessionId, 'text': translated_text_from_audio}
+    # Serialize the data into a JSON string
+    json_data = json.dumps(data)
+    response = requests.post(LL_MODEL_SERVER_URL, json=json_data)
+    result = response.json()
+    response_data = result.get('response', '')
+    audio_array_from_text, sample_rate = my_t2s(response_data)
     return jsonify({'audioData': audio_array_from_text.tolist(), 'sample_rate': sample_rate})
+
+
+@app.route('/api/infer')
+def infer():
+    # Get data from request
+    data = request.json
+    # Forward request to LL model server
+    response = requests.post(LL_MODEL_SERVER_URL, json=data)
+    data = response.json()
+    return jsonify(data)
 
 import os
 import socket

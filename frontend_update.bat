@@ -34,7 +34,7 @@ for /f "tokens=1,* delims= " %%a in ('"%programdata%\MiniConda\Scripts\conda.exe
     if "!env_path!"=="" (
         set "env_path=!env_name!"
     )
-    echo !env_path! | findstr /C:"env_nvd_rag" > nul
+    echo !env_path! | findstr /C:"env_home_ai" > nul
     if !errorlevel! equ 0 (
         set "env_path_found=!env_path!"
         goto :endfor
@@ -46,14 +46,19 @@ if not "%env_path_found%"=="" (
     @echo off
     @REM echo Environment path found: %env_path_found%
     call "%programdata%\MiniConda\Scripts\activate.bat" %env_path_found%
-    @REM python --version
-    echo Mistral server is starting, Please wait ...
-    python backend_app.py
-    pause
+    python --version
+    pip show zmq > nul 2>&1
+    if errorlevel 1 (
+        echo not found zmq... no need to uninstall!
+        
+    ) else (
+        echo zmq found. So uninstalling ...
+        pip uninstall zmq -y
+        pip uninstall pyzmq -y
+    )
 
 ) else (
     echo Environment with 'env_nvd_rag' not found.
-    pause
 )
 
 endlocal

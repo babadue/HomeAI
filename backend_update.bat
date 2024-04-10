@@ -46,14 +46,20 @@ if not "%env_path_found%"=="" (
     @echo off
     @REM echo Environment path found: %env_path_found%
     call "%programdata%\MiniConda\Scripts\activate.bat" %env_path_found%
-    @REM python --version
-    echo Mistral server is starting, Please wait ...
-    python backend_app.py
-    pause
+    python --version
+    pip install --upgrade flask==3.0.2
+    pip show zmq > nul 2>&1
+    if errorlevel 1 (
+        echo not found zmq... no need to uninstall!
+        
+    ) else (
+        echo zmq found. So uninstalling ...
+        pip uninstall zmq -y
+        pip uninstall pyzmq -y
+    )
 
 ) else (
     echo Environment with 'env_nvd_rag' not found.
-    pause
 )
 
 endlocal

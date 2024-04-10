@@ -23,6 +23,7 @@
 # Note that majority of the code in this file is derived from Chat with RTX's app.py.
 # The above copyright text is retained for record.
 
+import logging
 import os
 import sys
 local_app_data = os.getenv('LOCALAPPDATA')
@@ -123,19 +124,15 @@ def apply_chat_template(chat):
 
 #     # call garbage collector after inference
 #     torch.cuda.empty_cache()
-#     gc.collect()
 
 #     global llm, service_context, embed_model, faiss_storage, engine
-#     import gc
 #     if llm is not None:
 #         llm.unload_model()
 #         del llm
 #     # Force a garbage collection cycle
-#     gc.collect()
 
 # call garbage collector after inference
 # torch.cuda.empty_cache()
-# gc.collect()
 
 
 def my_stream_chatbot(query, client):
@@ -152,11 +149,8 @@ def my_stream_chatbot(query, client):
     response_data = call_llm_streamed(sessionId, query)
     response = response_data[1]
     client_history[-1][1] = response
-    my_msg_exchange.send_seamlessengine(sessionId,response)
+    return (sessionId, response)
 
-
-import threading
-from Msg_Exchange_Class import Msg_Backend
 
 def find_client(clients, sessionId):
     for client in clients:
@@ -187,16 +181,41 @@ def didReceive(json_data):
         client=find_client(my_lists, sessionId)
         if client==None:
             client=create_a_client(my_lists, sessionId)       
-        my_stream_chatbot(text, client)
+        sessionId, response = my_stream_chatbot(text, client)
+        return (sessionId, response)
+    return None
 
-my_msg_exchange = Msg_Backend(callback=didReceive)
-communication_thread = threading.Thread(target=my_msg_exchange.start_communication)
-communication_thread.start()
+
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+app.config['FLASK_ENV'] = 'production'
+
+@app.route('/infer', methods=['POST'])
+def infer():
+    json_data = request.json
+    # print("backend_app infer json_data", json_data)
+    # Perform inference
+    result =  didReceive(json_data)
+    if result is not None:
+        sessionId, response = result
+        result = {'sessionId': sessionId, 'response': response}
+        # print("backend_app infer result", result)
+        return jsonify(result)
+    else:
+        return '', 204  # Return empty response with status code 204 (No Content)
 
 import shutil
-print("\n" * 2)
-print("Mistral engine is ready. You can minimize this window.\n".center(shutil.get_terminal_size().columns))
-print("But do not close it while HomeAI is running.\n".center(shutil.get_terminal_size().columns))
+
+if __name__ == '__main__':
+    print("\n" * 2)
+    print("Mistral engine is ready. You can minimize this window.\n".center(shutil.get_terminal_size().columns))
+    print("But do not close it while HomeAI is running.\n".center(shutil.get_terminal_size().columns))
+    app.run(port=5001, debug=False)
+
+
 
 
     

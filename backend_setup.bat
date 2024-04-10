@@ -44,17 +44,11 @@ for /f "tokens=1,* delims= " %%a in ('"%programdata%\MiniConda\Scripts\conda.exe
 :endfor
 if not "%env_path_found%"=="" (
     @echo off
-    echo Environment path found: %env_path_found%
+    @REM echo Environment path found: %env_path_found%
     call "%programdata%\MiniConda\Scripts\activate.bat" %env_path_found%
     python --version
-    @REM pip --version
-    pip show zmq > nul 2>&1
-    if errorlevel 1 (
-        echo Installing zmq...
-        pip install zmq
-    ) else (
-        echo zmq is already installed.
-    )
+    pip install --upgrade flask==3.0.2
+
 ) else (
     echo Environment with 'env_nvd_rag' not found.
 )

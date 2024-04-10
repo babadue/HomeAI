@@ -17,5 +17,7 @@
     Add update.bat to sync the files from local git to HomeAI folder
 
 
+[v0.04] (04-10-2024)
 
+    Redesign the backend and frontend communications channel.
 
