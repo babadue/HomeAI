@@ -13,7 +13,6 @@
 
 . . . ! ! ! ? ? ? 
 
-## [The genie is out!](https://www.kickstarter.com/projects/babadue/a-private-customizable-ai-for-every-home)
 
 ## In the meantime, you can visit my other pages:
 
